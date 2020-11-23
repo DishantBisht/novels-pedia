@@ -49,13 +49,13 @@ class Header extends Component {
   	                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
   	            </NavItem>
   	            <NavItem>
-  	                <NavLink className="nav-link" to='/'><span className="fa fa-info fa-lg"></span> About Us</NavLink>
+  	                <NavLink className="nav-link" to='/aboutus'><span className="fa fa-info fa-lg"></span> About Us</NavLink>
   	            </NavItem>
   	            <NavItem>
-  	                <NavLink className="nav-link"  to='/'><span className="fa fa-list fa-lg"></span> Books</NavLink>
+  	                <NavLink className="nav-link"  to='/books'><span className="fa fa-list fa-lg"></span> Books</NavLink>
   	            </NavItem>
   	            <NavItem>
-  	                <NavLink className="nav-link" to='/'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
+  	                <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
   	            </NavItem>
 	            </Nav>
           </Collapse>
@@ -92,7 +92,7 @@ class Header extends Component {
           </Form>
         </ModalBody>
       </Modal>
-
+      <div>
       <Jumbotron>
            <div className="container">
                <div className="row row-header">
@@ -103,6 +103,7 @@ class Header extends Component {
                </div>
            </div>
        </Jumbotron>
+       </div>
     </React.Fragment>
     );
   }
