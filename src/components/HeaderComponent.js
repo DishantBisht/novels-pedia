@@ -42,7 +42,7 @@ class Header extends Component {
       <Navbar dark expand='md'>
         <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto" href="/"><img src="assets/images/logo.png" height="30" widht="41" alt="conFusion"/></NavbarBrand>
+            <NavbarBrand className="mr-auto" href="/"><img src="assets/images/logo.png" height="40" widht="61" alt="conFusion"/></NavbarBrand>
 	        <Collapse isOpen={this.state.isNavOpen} navbar>
 	            <Nav navbar>
   	            <NavItem>
@@ -92,9 +92,9 @@ class Header extends Component {
           </Form>
         </ModalBody>
       </Modal>
-      <div>
+      <div className="container">
       <Jumbotron>
-           <div className="container">
+           <div >
                <div className="row row-header">
                    <div className="col-12 col-sm-6">
                        <h1>Novels Pedia</h1>

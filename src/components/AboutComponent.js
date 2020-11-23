@@ -10,47 +10,25 @@ function About(props) {
     return(
         <div className="container">
             <div className="row">
-                <Breadcrumb>
+                <Breadcrumb className="container">
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>About Us</BreadcrumbItem>
-                </Breadcrumb>
-                <div className="col-12">
-                    <h3>About Us</h3>
-                    <hr />
-                </div>                
+                </Breadcrumb>             
             </div>
             <div className="row row-content">
-                <div className="col-12 col-md-6">
-                    <h2>Our History</h2>
-                    <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
-                    <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
-                </div>
-                <div className="col-12 col-md-5">
-                    <Card>
-                        <CardHeader className="bg-primary text-white">Facts At a Glance</CardHeader>
-                        <CardBody>
-                            <dl className="row p-1">
-                                <dt className="col-6">Started</dt>
-                                <dd className="col-6">3 Feb. 2013</dd>
-                                <dt className="col-6">Major Stake Holder</dt>
-                                <dd className="col-6">HK Fine Foods Inc.</dd>
-                                <dt className="col-6">Last Year's Turnover</dt>
-                                <dd className="col-6">$1,250,375</dd>
-                                <dt className="col-6">Employees</dt>
-                                <dd className="col-6">40</dd>
-                            </dl>
-                        </CardBody>
-                    </Card>
+                <div className="col-12 col-md-12">
+                    <h2>Some Text</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius purus ac sagittis venenatis. Curabitur dapibus fringilla felis, vel pharetra mi aliquam ut. Vivamus laoreet, elit eu tincidunt rhoncus, quam dolor blandit ipsum, at accumsan augue nulla ut mi. Curabitur fringilla aliquam sapien, sed consequat risus lacinia sed. Duis sed libero a libero sagittis tristique eu nec nibh. Fusce pharetra, diam non varius eleifend, urna justo faucibus nisl, eget sodales justo dolor eu augue. Nulla non leo ut sem maximus venenatis. Maecenas ac interdum justo, nec dapibus ex. Phasellus maximus accumsan finibus. Donec faucibus iaculis ullamcorper. Maecenas sit amet neque eget sapien cursus pharetra in ac nunc.
+                    </p>
                 </div>
                 <div className="col-12">
                     <Card>
                         <CardBody className="bg-faded">
                             <blockquote className="blockquote">
-                                <p className="mb-0">You better cut the pizza in four pieces because
-                                    I'm not hungry enough to eat six.</p>
+                                <p className="mb-0">It is a far, far better thing that I do, than I have ever done; it is a far, far better rest I go to than I have ever known.</p>
                                 <footer className="blockquote-footer">Yogi Berra,
-                                <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
-                                    P. Pepe, Diversion Books, 2014</cite>
+                                <cite title="Source Title">A Tale of Two Cities,
+                                Charles Dickens</cite>
                                 </footer>
                             </blockquote>
                         </CardBody>

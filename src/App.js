@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="App">
+          <div className="App" style={{ backgroundColor: '#cfb3aa' }}>
             <Main />
           </div>
         </BrowserRouter>

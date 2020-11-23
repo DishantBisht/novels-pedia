@@ -7,13 +7,9 @@ function Home(props) {
     return(
         <div className="container">
             <div className="row">
-                <Breadcrumb>
+                <Breadcrumb className="container">
                     <BreadcrumbItem active><Link>Home</Link></BreadcrumbItem>
-                </Breadcrumb>
-                <div className="col-12">
-                    <h3>Home</h3>
-                    <hr />
-                </div>                
+                </Breadcrumb>            
             </div>
         </div>
     );

@@ -9,7 +9,6 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-
 class CommentForm extends Component {
 
   constructor(props){
@@ -29,7 +28,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
       this.toggleModal();
-      this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+      this.props.postComment(this.props.bookId, values.rating, values.author, values.comment);
     }
 
   render(){
@@ -99,15 +98,15 @@ class CommentForm extends Component {
   }
 }
 
-function RenderDish({dish}){
-	if(dish!=null){
+function RenderBook({book}){
+	if(book!=null){
 		return(
 			<div className="col-12 col-sm-5 m-1">
         <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)'}}>
   				<Card>
-  					<CardImg top width="100%" src={baseUrl + dish.image} alt={dish.name} />
+  					<CardImg top width="100%" src={baseUrl + book.image} alt={book.name} />
   					<CardBody>
-  				        <CardText>{dish.description}</CardText>
+  				        <CardText>{book.description}</CardText>
             </CardBody>
   				</Card>
         </FadeTransform>
@@ -121,7 +120,7 @@ function RenderDish({dish}){
     }
 }
 
-  function RenderComments({comments, postComment, dishId}) {
+  function RenderComments({comments, postComment, bookId}) {
   	if(comments!=null){
 
 		return(
@@ -141,7 +140,7 @@ function RenderDish({dish}){
                         })}
                       </Stagger>
                 </ul>
-                <CommentForm dishId={dishId} postComment={postComment} />
+                <CommentForm bookId={bookId} postComment={postComment} />
             </div>
 		);	
 	}
@@ -153,24 +152,24 @@ function RenderDish({dish}){
 }
 
 function Details(props) {
-  if(props.dish!=null){
+  if(props.book!=null){
               return (
                 <React.Fragment>
                     <div className="container">
                         <div className="row">
-                            <Breadcrumb>
+                            <Breadcrumb className="container">
                                 <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                                <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                                <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/list">List</Link></BreadcrumbItem>
+                                <BreadcrumbItem active>{props.book.name}</BreadcrumbItem>
                             </Breadcrumb>
                             <div className="col-12">
-                                <h3>{props.dish.name}</h3>
+                                <h3>{props.book.name}</h3>
                                 <hr />
                             </div>                
                         </div>
                         <div className="row">
-                            <RenderDish dish={props.dish} />
-                            <RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
+                            <RenderBook book={props.book} />
+                            <RenderComments comments={props.comments} postComment={props.postComment} bookId={props.book.id} />
                         </div>
                     </div>
                 </React.Fragment>

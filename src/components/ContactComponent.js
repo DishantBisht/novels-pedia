@@ -35,28 +35,20 @@ class Contact extends Component {
         return(
             <div className="container">
                 <div className="row">
-                    <Breadcrumb>
+                    <Breadcrumb className="container">
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Contact Us</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>Contact Us</h3>
-                        <hr />
-                    </div>                
+                    </Breadcrumb>               
                 </div>
                 <div className="row row-content">
-                    <div className="col-12">
-                    <h3>Location Information</h3>
-                    </div>
                     <div className="col-12 col-sm-4 offset-sm-1">
-                            <h5>Our Address</h5>
                             <address>
                             UPES<br />
                             Dehradun<br />
                             INDIA<br />
                             <i className="fa fa-phone"></i>: +852 1234 5678<br />
                             <i className="fa fa-fax"></i>: +852 8765 4321<br />
-                            <i className="fa fa-envelope"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
+                            <i className="fa fa-envelope"></i>: <a href="mailto:DishantBisht32@gmail.com">DishantBisht32@gmail.com</a>
                             </address>
                     </div>
                     <div className="col-12 col-sm-11 offset-sm-1">
@@ -70,6 +62,7 @@ class Contact extends Component {
                 <div className="row row-content">
                     <div className="col-12">
                         <h3>Send us your Feedback</h3>
+                        <hr />
                     </div>
                     <div className="col-12 col-md-9">
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
