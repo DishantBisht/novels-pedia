@@ -99,7 +99,7 @@ export const postComment = (bookId, rating, author, comment) => (dispatch) => {
       })
     .then(response => response.json())
     .then(response => dispatch(addComment(response)))
-    .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
+    .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\n '+error.message); });
 };
 
 export const addComment = (bookId, rating, author, comment) => ({
@@ -152,3 +152,82 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
       alert("Your feedback could not be posted\nError: " + error.message);
     });
 };
+
+export const requestLogin = (creds) => {
+  return {
+      type: ActionTypes.LOGIN_REQUEST,
+      creds
+  }
+}
+
+export const receiveLogin = (response) => {
+  return {
+      type: ActionTypes.LOGIN_SUCCESS,
+      token: response.token
+  }
+}
+
+export const loginError = (message) => {
+  return {
+      type: ActionTypes.LOGIN_FAILURE,
+      message
+  }
+}
+
+export const loginUser = (creds) => (dispatch) => {
+  dispatch(requestLogin(creds))
+
+  return fetch(baseUrl + 'users/login', {
+      method: 'POST',
+      headers: { 
+          'Content-Type':'application/json' 
+      },
+      body: JSON.stringify(creds)
+  })
+  .then(response => {
+      if (response.ok) {
+          return response;
+      } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+      }
+      },
+      error => {
+          throw error;
+      })
+  .then(response => response.json())
+  .then(response => {
+      if (response.success) {
+
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('creds', JSON.stringify(creds));
+          dispatch(receiveLogin(response));
+      }
+      else {
+          var error = new Error('Error ' + response.status);
+          error.response = response;
+          throw error;
+      }
+  })
+  .catch(error => dispatch(loginError(error.message)))
+};
+
+export const requestLogout = () => {
+  return {
+    type: ActionTypes.LOGOUT_REQUEST
+  }
+}
+
+export const receiveLogout = () => {
+  return {
+    type: ActionTypes.LOGOUT_SUCCESS
+  }
+}
+
+export const logoutUser = () => (dispatch) => {
+  dispatch(requestLogout())
+  localStorage.removeItem('token');
+  localStorage.removeItem('creds');
+  dispatch(receiveLogout())
+}

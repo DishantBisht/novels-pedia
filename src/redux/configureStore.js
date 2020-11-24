@@ -4,6 +4,7 @@ import { Books } from './books';
 import { Comments } from './comments';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { Auth } from './auth';
 import { InitialFeedback } from './Form.js';
 
 export const ConfigureStore = () => {
@@ -11,6 +12,7 @@ export const ConfigureStore = () => {
         combineReducers({
             books: Books,
             comments: Comments,
+            auth: Auth,
             ...createForms({
                 feedback: InitialFeedback
             })

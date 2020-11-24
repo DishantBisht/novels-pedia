@@ -104,7 +104,7 @@ function RenderBook({book}){
 			<div className="col-12 col-sm-5 m-1">
         <FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)'}}>
   				<Card>
-  					<CardImg top width="100%" src={baseUrl + book.image} alt={book.name} />
+  					<CardImg top width="100%" src={book.image} alt={book.name} />
   					<CardBody>
   				        <CardText>{book.description}</CardText>
             </CardBody>
@@ -131,7 +131,7 @@ function RenderBook({book}){
                         {comments.map((comment) => {
                             return (
                                 <Fade in>
-                                <li key={comment.id}>
+                                <li key={comment._id}>
                                 <p>{comment.comment}</p>
                                 <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                                 </li>
@@ -159,7 +159,7 @@ function Details(props) {
                         <div className="row">
                             <Breadcrumb className="container">
                                 <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                                <BreadcrumbItem><Link to="/list">List</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/list">Books</Link></BreadcrumbItem>
                                 <BreadcrumbItem active>{props.book.name}</BreadcrumbItem>
                             </Breadcrumb>
                             <div className="col-12">
@@ -169,7 +169,7 @@ function Details(props) {
                         </div>
                         <div className="row">
                             <RenderBook book={props.book} />
-                            <RenderComments comments={props.comments} postComment={props.postComment} bookId={props.book.id} />
+                            <RenderComments comments={props.comments} postComment={props.postComment} bookId={props.book._id} />
                         </div>
                     </div>
                 </React.Fragment>
