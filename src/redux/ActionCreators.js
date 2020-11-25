@@ -123,7 +123,7 @@ export const postFeedback = (feedback) => (dispatch) => {
     )
     .catch(error => {
       console.log("post feedbacks", error.message);
-      alert("Your feedback could not be posted\nError: " + error.message);
+      alert("Your feedback could not be posted \n Please Login first \n Error: " + error.message);
     });
 };
 

@@ -106,8 +106,9 @@ function RenderBook({book}){
   				<Card>
   					<CardImg top width="100%" src={book.image} alt={book.name} />
   					<CardBody>
-                      <CardText><em><h6>Category: {book.category}</h6></em></CardText>
-  				      <CardText>{book.description}</CardText>  
+                        <CardText>Category: {book.category}</CardText>
+  				        <CardText>{book.description}</CardText>
+                        <CardText><em>{book.writer}</em></CardText>   
             </CardBody>
   				</Card>
         </FadeTransform>

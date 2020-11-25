@@ -9,7 +9,7 @@ function RenderBooksItem({book}){
 			<Card key={book._id}>
                 <CardImg className="img-fluid" width="100%" height="100%" src={book.image} alt={book.name} />
 		        <CardImgOverlay>
-		        	<CardTitle>{book.name}</CardTitle>
+		        	<CardTitle className="btn btn-light">{book.name}</CardTitle>
 		        </CardImgOverlay>
 		    </Card>
 	    </Link>
