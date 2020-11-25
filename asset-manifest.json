@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/novels-pedia/static/css/main.b99078bc.chunk.css",
+    "main.js": "/novels-pedia/static/js/main.256d3055.chunk.js",
+    "main.js.map": "/novels-pedia/static/js/main.256d3055.chunk.js.map",
+    "runtime-main.js": "/novels-pedia/static/js/runtime-main.8429c009.js",
+    "runtime-main.js.map": "/novels-pedia/static/js/runtime-main.8429c009.js.map",
+    "static/css/2.99056fc7.chunk.css": "/novels-pedia/static/css/2.99056fc7.chunk.css",
+    "static/js/2.1807981d.chunk.js": "/novels-pedia/static/js/2.1807981d.chunk.js",
+    "static/js/2.1807981d.chunk.js.map": "/novels-pedia/static/js/2.1807981d.chunk.js.map",
+    "static/js/3.c0c39023.chunk.js": "/novels-pedia/static/js/3.c0c39023.chunk.js",
+    "static/js/3.c0c39023.chunk.js.map": "/novels-pedia/static/js/3.c0c39023.chunk.js.map",
+    "index.html": "/novels-pedia/index.html",
+    "static/css/2.99056fc7.chunk.css.map": "/novels-pedia/static/css/2.99056fc7.chunk.css.map",
+    "static/css/main.b99078bc.chunk.css.map": "/novels-pedia/static/css/main.b99078bc.chunk.css.map",
+    "static/js/2.1807981d.chunk.js.LICENSE.txt": "/novels-pedia/static/js/2.1807981d.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/novels-pedia/static/media/JumboBackground.414a1218.jpg",
+    "static/media/font-awesome.css": "/novels-pedia/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8429c009.js",
+    "static/css/2.99056fc7.chunk.css",
+    "static/js/2.1807981d.chunk.js",
+    "static/css/main.b99078bc.chunk.css",
+    "static/js/main.256d3055.chunk.js"
+  ]
+}
