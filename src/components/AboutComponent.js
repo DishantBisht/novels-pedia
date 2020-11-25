@@ -17,8 +17,12 @@ function About(props) {
             </div>
             <div className="row row-content">
                 <div className="col-12 col-md-12">
-                    <h2>Some Text</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam varius purus ac sagittis venenatis. Curabitur dapibus fringilla felis, vel pharetra mi aliquam ut. Vivamus laoreet, elit eu tincidunt rhoncus, quam dolor blandit ipsum, at accumsan augue nulla ut mi. Curabitur fringilla aliquam sapien, sed consequat risus lacinia sed. Duis sed libero a libero sagittis tristique eu nec nibh. Fusce pharetra, diam non varius eleifend, urna justo faucibus nisl, eget sodales justo dolor eu augue. Nulla non leo ut sem maximus venenatis. Maecenas ac interdum justo, nec dapibus ex. Phasellus maximus accumsan finibus. Donec faucibus iaculis ullamcorper. Maecenas sit amet neque eget sapien cursus pharetra in ac nunc.
+                    <h2>Hi there!</h2>
+                    <p>This website was designed for the sole purpose of showcasing my skills as a MERN stack Developer. 
+                        Plaese Do read the guide on the home page to understand the aspects of this website.
+                        Have a nice day! 
+                    </p>
+                    <p>Do read the random quote..
                     </p>
                 </div>
                 <div className="col-12">

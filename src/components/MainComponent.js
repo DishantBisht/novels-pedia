@@ -8,7 +8,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, postFeedback, fetchBooks, fetchComments, loginUser, logoutUser } from '../redux/ActionCreators';
+import { postComment, postFeedback, fetchBooks, loginUser, logoutUser, postSignup } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -24,20 +24,19 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  postComment: (bookId, rating, comment) => dispatch(postComment(bookId, rating, comment)),
+  postComment: (bookId, by, rating, comment) => dispatch(postComment(bookId, by, rating, comment)),
   fetchBooks: () => {dispatch(fetchBooks())},
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
-  fetchComments: () => {dispatch(fetchComments())},
   postFeedback: (feedback) => dispatch(postFeedback(feedback)),
   loginUser: (creds) => dispatch(loginUser(creds)),
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
+  postSignup: (creds) => dispatch(postSignup(creds))
 });
 
 class Main extends Component {
 
   componentDidMount() {
     this.props.fetchBooks();
-    this.props.fetchComments();
   }
 
   render() {
@@ -58,17 +57,17 @@ class Main extends Component {
         <BookDetail book={this.props.books.books.filter((book) => book._id === match.params.bookId)[0]}
           isLoading={this.props.books.isLoading}
           errMess={this.props.books.errMess}
-          comments={this.props.comments.comments.filter((comment) => comment.book === match.params.bookId)}
           commentsErrMess={this.props.comments.errMess}
           postComment={this.props.postComment}
+          auth={this.props.auth}
           />
         :
         <BookDetail book={this.props.books.books.filter((book) => book._id === match.params.bookId)[0]}
           isLoading={this.props.books.isLoading}
           errMess={this.props.books.errMess}
-          comments={this.props.comments.comments.filter((comment) => comment.book === match.params.bookId)}
           commentsErrMess={this.props.comments.errMess}
           postComment={this.props.postComment}
+          auth={this.props.auth}
           />
       );
     }
@@ -88,7 +87,8 @@ class Main extends Component {
       <div>
         <Header auth={this.props.auth} 
           loginUser={this.props.loginUser} 
-          logoutUser={this.props.logoutUser} 
+          logoutUser={this.props.logoutUser}
+          postSignup={this.props.postSignup} 
           />   
         <TransitionGroup>
           <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>

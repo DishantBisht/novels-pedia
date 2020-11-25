@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem , Button, Col, Modal, ModalHeader, ModalBody, Label, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
@@ -28,7 +27,8 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
       this.toggleModal();
-      this.props.postComment(this.props.bookId, values.rating, values.author, values.comment);
+      this.props.postComment(this.props.bookId, values.author, values.rating, values.comment);
+      alert("Please! Refresh The page");
     }
 
   render(){
@@ -106,7 +106,8 @@ function RenderBook({book}){
   				<Card>
   					<CardImg top width="100%" src={book.image} alt={book.name} />
   					<CardBody>
-  				        <CardText>{book.description}</CardText>
+                      <CardText><em><h6>Category: {book.category}</h6></em></CardText>
+  				      <CardText>{book.description}</CardText>  
             </CardBody>
   				</Card>
         </FadeTransform>
@@ -120,7 +121,7 @@ function RenderBook({book}){
     }
 }
 
-  function RenderComments({comments, postComment, bookId}) {
+  function RenderComments({auth, comments, postComment, bookId}) {
   	if(comments!=null){
 
 		return(
@@ -130,17 +131,18 @@ function RenderBook({book}){
                       <Stagger in>
                         {comments.map((comment) => {
                             return (
-                                <Fade in>
-                                <li key={comment._id}>
-                                <p>{comment.comment}</p>
-                                <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                                <Fade key={comment._id} in>
+                                <li>
+                                    <p>{comment.comment}</p>
+                                    <p>{comment.rating} stars</p>
+                                    <p>-- {comment.by} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.updatedAt)))}</p>
                                 </li>
                                 </Fade>
                             );
                         })}
                       </Stagger>
                 </ul>
-                <CommentForm bookId={bookId} postComment={postComment} />
+                <CommentForm auth={auth} bookId={bookId} postComment={postComment} />
             </div>
 		);	
 	}
@@ -152,6 +154,7 @@ function RenderBook({book}){
 }
 
 function Details(props) {
+    
   if(props.book!=null){
               return (
                 <React.Fragment>
@@ -159,7 +162,7 @@ function Details(props) {
                         <div className="row">
                             <Breadcrumb className="container">
                                 <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                                <BreadcrumbItem><Link to="/list">Books</Link></BreadcrumbItem>
+                                <BreadcrumbItem><Link to="/books">Books</Link></BreadcrumbItem>
                                 <BreadcrumbItem active>{props.book.name}</BreadcrumbItem>
                             </Breadcrumb>
                             <div className="col-12">
@@ -169,7 +172,7 @@ function Details(props) {
                         </div>
                         <div className="row">
                             <RenderBook book={props.book} />
-                            <RenderComments comments={props.comments} postComment={props.postComment} bookId={props.book._id} />
+                            <RenderComments auth={props.auth} comments={props.book.comments} postComment={props.postComment} bookId={props.book._id} />
                         </div>
                     </div>
                 </React.Fragment>

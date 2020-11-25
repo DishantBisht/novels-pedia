@@ -1,3 +1,4 @@
+import { CardImgOverlay } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import * as ActionTypes from './ActionTypes';
 
@@ -38,26 +39,6 @@ export const addBooks = (books) => ({
     payload: books
 });
 
-export const fetchComments = () => (dispatch) => {    
-    return fetch(baseUrl + 'comments')
-        .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          var error = new Error('Error ' + response.status + ': ' + response.statusText);
-          error.response = response;
-          throw error;
-        }
-      },
-      error => {
-            var errmess = new Error(error.message);
-            throw errmess;
-      })
-    .then(response => response.json())
-    .then(comments => dispatch(addComments(comments)))
-    .catch(error => dispatch(commentsFailed(error.message)));
-};
-
 export const commentsFailed = (errmess) => ({
     type: ActionTypes.COMMENTS_FAILED,
     payload: errmess
@@ -68,22 +49,22 @@ export const addComments = (comments) => ({
     payload: comments
 });
 
-export const postComment = (bookId, rating, author, comment) => (dispatch) => {
+export const postComment = (bookId, by, rating, comment) => (dispatch) => {
     const newComment = {
-        bookId: bookId,
         rating: rating,
-        author: author,
+        by: by,
         comment: comment
     };
-    newComment.date = new Date().toISOString();
-    
-    return fetch(baseUrl + 'comments', {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+    console.log(bearer);
+    return fetch(baseUrl + "books/" + bookId + '/comments', {
         method: "POST",
         body: JSON.stringify(newComment),
         headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "same-origin"
+          'Content-Type': 'application/json',
+          'Authorization': bearer
+      }
     })
     .then(response => {
         if (response.ok) {
@@ -107,22 +88,15 @@ export const addComment = (bookId, rating, author, comment) => ({
     payload: comment
 });
 
-export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message ) => (dispatch) => {
-  const newFeedback = {
-    firstname: firstname,
-    lastname: lastname,
-    telnum: telnum,
-    email: email,
-    agree: agree,
-    contactType: contactType,
-    message: message
-  };
+export const postFeedback = (feedback) => (dispatch) => {
 
+  const bearer = 'Bearer ' + localStorage.getItem('token');
   return fetch(baseUrl + "feedback", {
     method: "POST",
-    body: JSON.stringify(newFeedback),
+    body: JSON.stringify(feedback),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      'Authorization': bearer
     },
     credentials: "same-origin"
   })
@@ -231,3 +205,29 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('creds');
   dispatch(receiveLogout())
 }
+
+export const postSignup = (creds) => (dispatch) => {
+  
+  return fetch(baseUrl + 'users/signup' , {
+      method: "POST",
+      body: JSON.stringify(creds),
+      headers: {
+        'Content-Type': 'application/json'
+    },
+      credentials: "same-origin"
+  })
+  .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+  .then(response => response.json())
+  .catch(error =>  { console.log('post UserSignUp', error.message); alert('User not Added\n '+error.message); });
+};
