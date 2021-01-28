@@ -1,4 +1,3 @@
-import { CardImgOverlay } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import * as ActionTypes from './ActionTypes';
 

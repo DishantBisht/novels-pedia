@@ -60,11 +60,11 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-                <Navbar dark expand="md">
+                <Navbar dark expand="md" style={{ width: 'parent'}}>
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/">
-                            <img src="assets/images/logo.png" height="30" width="41"
+                            <img src={process.env.PUBLIC_URL + '/assets/images/logo.png'} height="50" width="61"
                                 alt="NovelsPedia" />
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
@@ -128,11 +128,12 @@ class Header extends Component {
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
                                 <h1>Novels Pedia</h1>
-                                <h4>A collection of novels!</h4>
+                                <h4>A place where you can review your favourite books and or read what others have to say about them.</h4>
                             </div>
                         </div>
                     </div>
                 </Jumbotron>
+
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
